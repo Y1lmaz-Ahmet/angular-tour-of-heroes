@@ -14,6 +14,11 @@ export class HeroesComponent implements OnInit{
   constructor(private heroService:HeroService,private messageService:MessageService){}
   selectedHero?: Hero;
   
+  getHeroes():void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
+  
   ngOnInit():void{
     this.getHeroes();
   }
@@ -23,10 +28,7 @@ export class HeroesComponent implements OnInit{
     this.messageService.add(`HeroesComponent: Selected Hero id: ${hero.id}`)
   }
 
-  getHeroes():void {
-    this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
-  }
+  
   
   
   
